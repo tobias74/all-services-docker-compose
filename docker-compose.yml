@@ -1,0 +1,49 @@
+version: "3"
+services:
+  mongo:
+    image: mongo
+    container_name: docker-mongo
+    volumes:
+      - /var/docker_folders/common/mongodb-data:/data/db
+    networks:
+      - appnet
+    ports:
+      - 27017:27017
+      
+      
+  elasticsearch:
+    image: elasticsearch:latest
+    container_name: docker-elasticsearch
+    volumes:
+      - /var/docker_folders/common/elasticsearch-data:/usr/share/elasticsearch/data
+    networks:
+      - appnet
+    ports:
+      - 9200:9200
+      - 9300:9300
+    
+
+  redis:
+    image: redis
+    container_name: docker-redis
+    networks:
+      - appnet
+    ports:
+      - 6379:6379
+
+
+  rammitmq:
+    image: rabbitmq:3-management
+    container_name: docker-rabbitmq
+    networks:
+      - appnet
+    ports:
+      - 5672:5672
+      - 15672:15672
+
+
+networks:
+  appnet:
+    external: true
+
+  
