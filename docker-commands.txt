@@ -1,0 +1,27 @@
+To start the server-services (elasticsearch, rabbitmq etc):
+
+docker-compose up
+
+
+
+To create the user in rabbitmq:
+
+docker exec -it docker-rabbitmq sh -c "`RABBITMQ_USER=tobias RABBITMQ_PASSWORD=tobkean ./echo-create-rabbit-users.sh`"
+
+
+
+
+To setup the network:
+
+docker network create nginx-proxy
+
+
+
+
+cd /srv/www/nginx-proxy/
+
+docker-compose up -d
+
+
+
+
