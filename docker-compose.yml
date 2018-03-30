@@ -1,5 +1,17 @@
 version: "3"
 services:
+
+  cassandra:
+    image: cassandra
+    container_name: docker-cassandra
+    volumes:
+      - /var/docker_folders/common/cassandra-data:/var/lib/cassandra
+    networks:
+      - appnet
+    ports:
+      - 9042:9042
+
+
   mongo:
     image: mongo
     container_name: docker-mongo
